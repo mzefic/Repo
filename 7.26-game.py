@@ -21,26 +21,28 @@ def play_once(human_plays_first):
 
 
 def main_program():
+    first = True
     count_human = 0
     count_computer = 0
     count_draws = 0
     for i in itertools.repeat(1):
-        if play_once(True) == -1:
+        if play_once(first) == -1:
             count_human += 1
             print("I win!")
             print("Results:\n", "Human:", count_human, "\n", "Computer:", count_computer, "\n", "Draws:", count_draws)
-        if play_once(True) == 0:
+        if play_once(first) == 0:
             count_draws += 1
             print("Game drawn")
             print("Results:\n", "Human:", count_human, "\n", "Computer:", count_computer, "\n", "Draws:", count_draws)
-        if play_once(True) == 1:
+        if play_once(first) == 1:
             count_computer += 1
             print("You win!")
             print("Results:\n", "Human:", count_human, "\n", "Computer:", count_computer, "\n", "Draws:", count_draws)
         again = input("Do you want to play again?")
-        if again == "Yes":
+        if again == "yes":
+            first = not(first)
             continue
-        if again == "No":
+        if again == "no":
             print("Goodbye")
             break
 
