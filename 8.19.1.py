@@ -1,4 +1,5 @@
 import sys
+import string
 
 def test(did_pass):
     """  Print the result of a test.  """
@@ -41,7 +42,20 @@ def book_strings():
         else:
             print(p + suffix)
 
-book_strings()
+#book_strings()
+
+def remove_punctuation(s):
+    s_without_punct = ""
+    for letter in s:
+        if letter not in string.punctuation:
+            s_without_punct += letter
+    return s_without_punct
+
+#test(remove_punctuation('"Well, I never did!", said Alice.') == "Well I never did said Alice")
+#test(remove_punctuation("Are you very, very, sure?") == "Are you very very sure")
+
+s1 = "His name is {0}!".format("Arthur")
+print(s1)
 
 
 #test_suite()        # Here is the call to run the tests
