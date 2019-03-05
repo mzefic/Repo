@@ -1,42 +1,44 @@
-import sys
-import math
+from unit_tester import test
 
-def test(did_pass):
-    """  Print the result of a test.  """
-    linenum = sys._getframe(1).f_lineno   # Get the caller's line number.
-    if did_pass:
-        msg = "Test at line {0} ok.".format(linenum)
+def longestword(l):
+    if l == []:
+        return 0
     else:
-        msg = ("Test at line {0} FAILED.".format(linenum))
-    print(msg)
+        result = []
+        for i in l:
+            result.append(len(i))
+        result.sort()
+        return result[-1]
 
 
-def test_suite():
-    """ Run the suite of tests for code in this module (this file).
-    """
-    test(dot_product([1, 1], [1, 1]) ==  2)
-    test(dot_product([1, 2], [1, 4]) ==  9)
-    test(dot_product([1, 2, 1], [1, 4, 3]) == 12)
+#test(cleanword("what?") == "what")
+#test(cleanword("'now!'") == "now")
+#test(cleanword("?+='w-o-r-d!,@$()'") ==  "word")
 
-def add_vectors(u, v):
-    result = []
-    for i in range(len(u)):
-        x = (u[i] + v[i])
-        result.append(x)
-    return result
+#test(has_dashdash("distance--but"))
+#test(not has_dashdash("several"))
+#test(has_dashdash("spoke--"))
+#test(has_dashdash("distance--but"))
+#test(not has_dashdash("-yo-yo-"))
 
-def scalar_mult(s, v):
-    result = []
-    for i in range(len(v)):
-        x = (s * v[i])
-        result.append(x)
-    return result
-
-def dot_product(u, v):
-    result = 0
-    for i in range(len(u)):
-        result += (u[i] * v[i])
-    return result
+#test(extract_words("Now is the time!  'Now', is the time? Yes, now.") == ['now','is','the','time','now','is','the','time','yes','now'])
+#test(extract_words("she tried to curtsey as she spoke--fancy") == ['she','tried','to','curtsey','as','she','spoke','fancy'])
 
 
-test_suite()        # Here is the call to run the tests
+#test(wordcount("now", ["now","is","time","is","now","is","is"]) == 2)
+#test(wordcount("is", ["now","is","time","is","now","the","is"]) == 3)
+#test(wordcount("time", ["now","is","time","is","now","is","is"]) == 1)
+#test(wordcount("frog", ["now","is","time","is","now","is","is"]) == 0)
+
+#test(wordset(["now", "is", "time", "is", "now", "is", "is"]) ==
+#      ["is", "now", "time"])
+#test(wordset(["I", "a", "a", "is", "a", "is", "I", "am"]) ==
+#      ["I", "a", "am", "is"])
+#test(wordset(["or", "a", "am", "is", "are", "be", "but", "am"]) ==
+#      ["a", "am", "are", "be", "but", "is", "or"])
+
+test(longestword(["a", "apple", "pear", "grape"]) == 5)
+test(longestword(["a", "am", "I", "be"]) == 2)
+test(longestword(["this","supercalifragilisticexpialidocious"]) == 34)
+test(longestword([ ]) == 0)
+

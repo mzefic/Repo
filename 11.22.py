@@ -14,9 +14,13 @@ def test(did_pass):
 def test_suite():
     """ Run the suite of tests for code in this module (this file).
     """
-    test(dot_product([1, 1], [1, 1]) ==  2)
-    test(dot_product([1, 2], [1, 4]) ==  9)
-    test(dot_product([1, 2, 1], [1, 4, 3]) == 12)
+    test(replace("Mississippi", "i", "I") == "MIssIssIppI")
+
+    s = "I love spom! Spom is my favorite food. Spom, spom, yum!"
+    test(replace(s, "om", "am") == "I love spam! Spam is my favorite food. Spam, spam, yum!")
+
+    test(replace(s, "o", "a") ==
+    "I lave spam! Spam is my favarite faad. Spam, spam, yum!")
 
 def add_vectors(u, v):
     result = []
@@ -38,5 +42,31 @@ def dot_product(u, v):
         result += (u[i] * v[i])
     return result
 
+def replace(s, old, new):
+    result = str
+    p = len(s)
+    g = len(old)
+    x = []
+    for i in s:
+        if i == old:
+            i = new
+        x.append(i)
+    result = "".join(x)
+    return result
+
+def replace(s, old, new):
+    result = "new".join(s.split("old"))
+    return result
+
+
+print(replace("I love spom! Spom is my favorite food. Spom, spom, yum!", "om", "am"))
 
 test_suite()        # Here is the call to run the tests
+
+s = "I love spom! Spom is my favorite food. Spom, spom, yum!"
+
+for i in range(0, len(s) -1, 2):
+    print(s.find('om'))
+
+print(s.replace('om', 'am'))
+
