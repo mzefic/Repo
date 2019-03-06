@@ -1,4 +1,5 @@
 import random
+import word_operations
 
 def make_random_ints_no_dups(num, lower_bound, upper_bound):
    """
