@@ -7,4 +7,3 @@ snake1
 snake2
 snake3
 
-snake4

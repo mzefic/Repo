@@ -1,4 +1,11 @@
 
+snake4
+
+snake3
+snake2
+
+snake1
+
 Hello, world!
 ---------------------------------
 My first file written from Python

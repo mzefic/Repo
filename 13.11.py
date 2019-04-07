@@ -45,7 +45,7 @@ the_text = retrieve_page("https://www.w3.org/TR/PNG/iso_8859-1.txt")
 print(the_text)
 
 
-
+#13.11.1
 f = open("test.txt", "r")
 s = f.read()
 f.close()
@@ -55,15 +55,56 @@ f.write('\n'.join(lines[::-1]))
 f.close
 
 
+#13.11.2
 f = open("test.txt", "r")
-s = f.readline()
-s.split("\n")
-if "snake" in s:
-    print(s)
-f.close
 while True:
-    if len(s) == 0:
-        break
-    if g in s:
+    s = f.readline()
+    if "snake" in s:
         print(s)
+    elif len(s) == 0:
+        break
 f.close
+
+
+
+#13.11.3
+f = open("test.txt", "r")
+s = open("test1.txt", "w")
+i = 1
+t = str
+while True:
+    g = f.readline()
+    if len(g) == 0:
+        break
+    else:
+        if i<10:
+            t = "000" + str(i) + " " + str(g)
+            s.write(t)
+        if i<100 & i>=10:
+            t = "00" + str(i) + " " + str(g)
+            s.write(t)
+        if i<1000 & i>=100:
+            t = "0" + str(i) + " " + str(g)
+            s.write(t)
+        if i>=1000:
+            t = str(i) + " " + str(g)
+            s.write(t)
+    i += 1
+f.close
+s.close
+
+
+
+#13.11.4
+f = open("test1.txt", "r")
+s = open("test2.txt", "w")
+t = str
+while True:
+    g = f.readline()
+    if len(g) == 0:
+        break
+    x = g.split(" ")
+    y = ' '.join(x[1:])
+    s.write(y)
+f.close
+s.close
