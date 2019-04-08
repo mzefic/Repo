@@ -1,0 +1,9 @@
+0001 My first file written from Python
+0002 ---------------------------------
+0003 Hello, world!
+0004 
+0005 snake1
+0006 
+0007 snake2
+0008 snake3
+0009 

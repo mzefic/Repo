@@ -1,0 +1,9 @@
+My first file written from Python
+---------------------------------
+Hello, world!
+
+snake1
+
+snake2
+snake3
+
