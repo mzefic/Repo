@@ -72,7 +72,7 @@ def search_binary(xs, target):
             lb = mid_index + 1    # Use upper half of ROI next time
         else:
             ub = mid_index        # Use lower half of ROI next time
-        
+
 def remove_adjacent_dups(xs):
     """ Return a new list in which all adjacent
         duplicates from xs have been removed.
@@ -134,7 +134,7 @@ def find_unknowns_merge_pattern(vocab, wds):
 
         else:                     # Got word that is not in vocab
             result.append(wds[yi])
-            yi += 1            
+            yi += 1
 
 def share_diagonal(x0, y0, x1, y1):
     """ Is (x0, y0) on a shared diagonal with (x1, y1)? """
@@ -180,19 +180,8 @@ def main():
 main()
 
 book_words = get_words_in_book("alice_in_wonderland.txt")
-#print("There are {0} words in the book, the first 100 are\n{1}".
-#           format(len(book_words), book_words[:100]))
 bigger_vocab = load_words_from_file("vocab.txt")
-#print(find_unknown_words(bigger_vocab, book_words))
 
-
-#t0 = time.process_time()
-#missing_words = find_unknown_words(bigger_vocab, book_words)
-#t1 = time.process_time()
-#print("There are {0} unknown words.".format(len(missing_words)))
-#print("That took {0:.4f} seconds.".format(t1-t0))
-
-#search_binary(bigger_vocab, "magic")
 
 all_words = get_words_in_book("alice_in_wonderland.txt")
 t0 = time.process_time()
