@@ -62,7 +62,7 @@ def search_binary(xs, target):
         # Fetch the item at that position
         item_at_mid = xs[mid_index]
 
-        print("ROI[{0}:{1}](size={2}), probed='{3}', target='{4}'"
+        #print("ROI[{0}:{1}](size={2}), probed='{3}', target='{4}'"
                .format(lb, ub, ub-lb, item_at_mid, target))
 
         # How does the probed item compare to the target?
