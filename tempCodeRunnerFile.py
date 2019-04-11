@@ -1,15 +1,16 @@
-#14.11.1.d
-def merge2(xs, ys):
+x = [42,4,7,11,1,13]
+y = [42,4,7,11,1,13]
+#print(lotto())
+
+
+#14.11.5.b
+def lotto_match(x, y):
     result = []
     xi = 0
-    yi = 0
-
-    while xi < (len(xs)):
-        if xs[xi] in ys[yi:]:
-            yi += 1
-        elif xs[xi] not in ys:
-            result.append(xs[xi])
-            xi += 1
+    for xi in y:
+        if x[xi] in y:
+            result.append(x[xi])
+        xi += 1
     return result
 
-print(merge2([5,7,11,11,11,12,13], [7,8,11]))
+print(lotto_match([42,4,7,11,1,13], [2,5,7,11,13,17]))

@@ -63,7 +63,7 @@ def search_binary(xs, target):
         item_at_mid = xs[mid_index]
 
         #print("ROI[{0}:{1}](size={2}), probed='{3}', target='{4}'"
-               .format(lb, ub, ub-lb, item_at_mid, target))
+        #       .format(lb, ub, ub-lb, item_at_mid, target))
 
         # How does the probed item compare to the target?
         if item_at_mid == target:
@@ -136,6 +136,19 @@ def find_unknowns_merge_pattern(vocab, wds):
             result.append(wds[yi])
             yi += 1
 
+book_words = get_words_in_book("alice_in_wonderland.txt")
+bigger_vocab = load_words_from_file("vocab.txt")
+
+
+all_words = get_words_in_book("alice_in_wonderland.txt")
+t0 = time.process_time()
+all_words.sort()
+book_words = remove_adjacent_dups(all_words)
+missing_words = find_unknowns_merge_pattern(bigger_vocab, book_words)
+t1 = time.process_time()
+#print("There are {0} unknown words.".format(len(missing_words)))
+#print("That took {0:.4f} seconds.".format(t1-t0))
+
 def share_diagonal(x0, y0, x1, y1):
     """ Is (x0, y0) on a shared diagonal with (x1, y1)? """
     dy = abs(y1 - y0)        # Calc the absolute y distance
@@ -169,25 +182,18 @@ def main():
     bd = list(range(8))     # Generate the initial permutation
     num_found = 0
     tries = 0
+    solutions = []
     while num_found < 10:
        rng.shuffle(bd)
        tries += 1
        if not has_clashes(bd):
-           print("Found solution {0} in {1} tries.".format(bd, tries))
-           tries = 0
-           num_found += 1
+            if bd in solutions:
+                continue
+            elif bd not in solutions:
+                solutions.append(bd)
+                print("Found solution {0} in {1} tries.".format(bd, tries))
+                tries = 0
+                num_found += 1
 
 main()
 
-book_words = get_words_in_book("alice_in_wonderland.txt")
-bigger_vocab = load_words_from_file("vocab.txt")
-
-
-all_words = get_words_in_book("alice_in_wonderland.txt")
-t0 = time.process_time()
-all_words.sort()
-book_words = remove_adjacent_dups(all_words)
-missing_words = find_unknowns_merge_pattern(bigger_vocab, book_words)
-t1 = time.process_time()
-print("There are {0} unknown words.".format(len(missing_words)))
-print("That took {0:.4f} seconds.".format(t1-t0))
