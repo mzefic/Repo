@@ -82,12 +82,68 @@ y = [42,4,7,11,1,13]
 def lotto_match(x, y):
     result = []
     xi = 0
-    for xi in y:
+    while xi < len(y):
         if x[xi] in y:
             result.append(x[xi])
         xi += 1
+    return len(result)
+
+#14.11.5.c
+def lotto_matches(x, y):
+    result = []
+    i = 0
+    while i < len(my_tickets):
+        result.append(lotto_match(x, my_tickets[i]))
+        i += 1
     return result
 
-print(lotto_match([42,4,7,11,1,13], [2,5,7,11,13,17]))
+
+#14.11.5.d
+def primes_in(x):
+    i = 0
+    g = 0
+    result = []
+    while i < len(x):
+        if x[i] == 1:
+            i += 1
+            continue
+        for g in range(2, x[i]):
+            if (x[i] % g) == 0:
+                i += 1
+                break
+            else:
+                result.append(x[i])
+                i += 1
+                break
+    return result
+
+
+#14.11.5.e
+def prime_misses(x):
+    result = []
+    primesPresent = []
+    primes = []
+    xi = 0
+    i = 0
+    num = 49
+    for i in range(len(x)):
+        primesPresent.append(primes_in(x[i]))
+    for i in range(2, num):
+        if (num % i) == 0:
+            i += 1
+        else:
+            primes.append(i)
+            i += 1
+    while xi < len(primes):
+        if primesPresent[xi] in primes:
+            result.append(x[xi])
+        xi += 1
+    return len(result)
+
+
+#print(lotto_match([42,4,7,11,1,13], [2,5,7,11,13,17]))
 
 test(lotto_match([42,4,7,11,1,13], [2,5,7,11,13,17]) == 3)
+test(lotto_matches([42,4,7,11,1,13], my_tickets) == [1,2,3,1])
+test(primes_in([42, 4, 7, 11, 1, 13]) == 3)
+test(prime_misses(my_tickets) == [3, 29, 47])
