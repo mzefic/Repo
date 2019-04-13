@@ -41,8 +41,38 @@ def merge1(xs, ys):
 
 #print(merge1([0,4,7,5,2,6,1,3],[8,1,3,9,6,4,2,5]))
 
+#14.11.1.b
+def merge4(x, y):
+    result = []
+    xi = 0
+    yi = 0
+
+    while xi < (len(x)):
+        if x[xi] not in y:
+            result.append(x[xi])
+        xi += 1
+    result.sort()
+    return result
+
 #14.11.1.d
-def merge2(xs, ys):
+def merge2(x, y):
+    result = []
+    xi = 0
+    yi = 0
+
+    while xi < (len(x)):
+        if x[xi] not in y:
+            result.append(x[xi])
+        xi += 1
+    result.extend(y[yi:])
+    result.sort()
+    return result
+
+#print(merge2([5,7,11,11,11,12,13], [7,8,11]))
+        
+
+#14.11.1.e
+def merge3(xs, ys):
     result = []
     xi = 0
     yi = 0
@@ -57,7 +87,7 @@ def merge2(xs, ys):
             xi += 1
     return result
 
-#print(merge2([5,7,11,11,11,12,13], [7,8,11]))
+#print(merge3([5,7,11,11,11,12,13], [7,8,11]))
 
 
 
@@ -65,6 +95,7 @@ my_tickets = [ [ 7, 17, 37, 19, 23, 43],
                [ 7,  2, 13, 41, 31, 43],
                [ 2,  5,  7, 11, 13, 17],
                [13, 17, 37, 19, 23, 43] ]
+
 
 #14.11.5.a
 def lotto():
@@ -104,7 +135,11 @@ def primes_in(x):
     g = 0
     result = []
     while i < len(x):
-        if x[i] == 1:
+        if x[i] == 0:
+            i += 1
+            continue
+        if x[i] == 2:
+            result.append(x[i])
             i += 1
             continue
         for g in range(2, x[i]):
@@ -117,34 +152,57 @@ def primes_in(x):
                 break
     return result
 
-print(primes_in([42, 4, 7, 11, 1, 13]))
+#primes in a number
+def primesN(x):
+    result = []
+    for num in range(49):
+        if num > 1:
+            for i in range(2,num):
+                if (num % i) == 0:
+                    break
+            else:
+                result.append(num)
+    return result  
+
+print(primesN(49))            
 
 #14.11.5.e
 def prime_misses(x):
     result = []
+    num = 49
     primesPresent = []
-    primes = []
+    primes = primesN(num)
     xi = 0
     i = 0
-    num = 49
     for i in range(len(x)):
         primesPresent.append(primes_in(x[i]))
-    for i in range(2, num):
-        if (num % i) == 0:
-            i += 1
+    for xi in range(len(primesPresent)):
+        if xi == (len(primesPresent)-1):
+            break
         else:
-            primes.append(i)
-            i += 1
-    while xi < len(primes):
-        if primesPresent[xi] in primes:
-            result.append(x[xi])
-        xi += 1
-    return len(result)
+            result.extend(merge2(primesPresent[xi], primesPresent[xi+1]))
+    result.sort()
+    primesMissing = merge4(primes, result)
+    return primesMissing
 
+print(prime_misses(my_tickets))
 
 #print(lotto_match([42,4,7,11,1,13], [2,5,7,11,13,17]))
 
 test(lotto_match([42,4,7,11,1,13], [2,5,7,11,13,17]) == 3)
 test(lotto_matches([42,4,7,11,1,13], my_tickets) == [1,2,3,1])
-test(primes_in([42, 4, 7, 11, 1, 13]) == 3)
+#test(primes_in([42, 4, 7, 11, 1, 13]) == 3)
 test(prime_misses(my_tickets) == [3, 29, 47])
+
+
+#14.11.5.f
+def draw_compare(x):
+    repeats = 20
+    i = 0
+    xi = 0
+    while i <= repeats:
+        for xi in range(len(x)):
+            print(lotto_match(lotto(), x[xi]))
+            #print("We've got {0} matches in the ticket with number {1}!" .format(lotto_match(lotto(), x[xi]), xi)
+
+draw_compare(my_tickets)
