@@ -202,7 +202,7 @@ def draw_compare(x):
     xi = 0
     while i <= repeats:
         for xi in range(len(x)):
-            print(lotto_match(lotto(), x[xi]))
-            #print("We've got {0} matches in the ticket with number {1}!" .format(lotto_match(lotto(), x[xi]), xi)
-
+            print("We've got {0} matches in the ticket with number {1}!" 
+                              .format(lotto_match(lotto(), x[xi]), xi+1))
+        continue
 draw_compare(my_tickets)

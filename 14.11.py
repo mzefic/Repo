@@ -69,7 +69,7 @@ def merge2(x, y):
     return result
 
 #print(merge2([5,7,11,11,11,12,13], [7,8,11]))
-        
+
 
 #14.11.1.e
 def merge3(xs, ys):
@@ -162,9 +162,9 @@ def primesN(x):
                     break
             else:
                 result.append(num)
-    return result  
+    return result
 
-print(primesN(49))            
+print(primesN(49))
 
 #14.11.5.e
 def prime_misses(x):
@@ -202,7 +202,7 @@ def draw_compare(x):
     xi = 0
     while i <= repeats:
         for xi in range(len(x)):
-            print(lotto_match(lotto(), x[xi]))
-            #print("We've got {0} matches in the ticket with number {1}!" .format(lotto_match(lotto(), x[xi]), xi)
-
+            print("We've got {0} matches in the ticket with number {1}!"
+                              .format(lotto_match(lotto(), x[xi]), xi+1))
+        continue
 draw_compare(my_tickets)
