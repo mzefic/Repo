@@ -196,13 +196,25 @@ test(prime_misses(my_tickets) == [3, 29, 47])
 
 
 #14.11.5.f
-def draw_compare(x):
-    repeats = 20
+def draw_average(x):
     i = 0
     xi = 0
-    while i <= repeats:
+    count = 0
+    match = 0
+    average = 0
+    while i < 20:
+        draw = lotto()
+        count += 1
         for xi in range(len(x)):
-            print("We've got {0} matches in the ticket with number {1}!"
-                              .format(lotto_match(lotto(), x[xi]), xi+1))
-        continue
-draw_compare(my_tickets)
+            if (lotto_match(draw, x[xi])) == 5:
+                match += 1
+                i += 1
+                average += count                
+                print("We've got a 5 number match on the {0}th draw!"
+                                                    .format(count))
+                count = 0
+                break
+            #print("We've got {0} matches in the ticket with number {1}!"
+            #                  .format(lotto_match(draw, x[xi]), xi+1))
+    print(average/20)
+draw_average(my_tickets)
