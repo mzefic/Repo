@@ -1,3 +1,5 @@
+from turtle import Turtle
+
 class Point:
     """ Point class represents and manipulates x,y coords. """
 
@@ -8,5 +10,8 @@ class Point:
 
 p = Point()
 q = Point()
+
+tess = Turtle()
+alex = Turtle()
 
 print(p.x, p.y, q.x, q.y)
